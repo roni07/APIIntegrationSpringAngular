@@ -1,0 +1,63 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="addStudent()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="id">Id</label>
+        <input
+          formControlName="studentId"
+          type="text" class="form-control" id="id">
+        <div *ngIf="studentId.touched && studentId.invalid"
+             class="alert alert-danger">Student ID is Required</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input
+          formControlName="studentName"
+          type="text" class="form-control" id="name">
+        <div *ngIf="studentName.touched && studentName.invalid"
+             class="alert alert-danger">Student Name is Required</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="age">Age</label>
+        <input
+          formControlName="age"
+          type="text" class="form-control" id="age">
+        <div *ngIf="age.touched && age.invalid"
+             class="alert alert-danger">Student Age is Required</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cgpa">CGPA</label>
+        <input
+          formControlName="cgpa"
+          type="text" class="form-control" id="cgpa">
+        <div *ngIf="cgpa.touched && cgpa.invalid"
+             class="alert alert-danger">Student CGPA is Required</div>
+      </div>
+    </div>
+    <button [disabled]="form.invalid" (click)="resetForms()" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+
+<div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">CGPA</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let student of students">
+        <th scope="row">{{ student.studentId }}</th>
+        <td>{{ student.studentName }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.cgpa }}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
